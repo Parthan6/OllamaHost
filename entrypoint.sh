@@ -1,13 +1,15 @@
 #!/bin/sh
 
-# Start Ollama in background
+# Start Ollama in the background
 ollama serve &
 
-# Wait a few seconds
+# Wait for it to boot
 sleep 10
 
-# Pull the model (optional)
-ollama pull mistral
+# Pull your model (choose one)
+ollama pull qwen2:1.5b
+# ollama pull mistral
 
-# Keep running
+# Keep container alive
 tail -f /dev/null
+
