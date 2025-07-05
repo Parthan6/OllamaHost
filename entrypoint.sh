@@ -8,7 +8,7 @@ ollama serve &
 sleep 10
 
 # Pull the model (replace with your model, e.g., llama3, codellama, etc.)
-ollama pull qwen2
+ollama pull phi
 
 # Keep container running
 tail -f /dev/null
