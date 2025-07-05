@@ -7,4 +7,3 @@ EXPOSE 11434
 
 CMD ["/entrypoint.sh"]
 
-
