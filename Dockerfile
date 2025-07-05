@@ -1,9 +1,12 @@
-FROM ollama/ollama:latest
+FROM ollama/ollama
 
+# Copy the entrypoint script
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
-EXPOSE 11434
+# Override default entrypoint
+ENTRYPOINT ["/entrypoint.sh"]
 
-CMD ["/entrypoint.sh"]
+# Expose the Ollama API port
+EXPOSE 11434
 
