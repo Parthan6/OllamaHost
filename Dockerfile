@@ -1,12 +1,21 @@
-FROM ollama/ollama
+FROM debian:bullseye-slim
 
-# Copy the entrypoint script
+# Install dependencies and Ollama
+RUN apt-get update && apt-get install -y curl gnupg ca-certificates && \
+    curl -fsSL https://ollama.com/install.sh | sh && \
+    rm -rf /var/lib/apt/lists/*
+
+# Set working directory
+WORKDIR /app
+
+# Copy entrypoint script
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
-# Override default entrypoint
+# Expose the default Ollama port
+EXPOSE 11434
+
+# Start script
 ENTRYPOINT ["/entrypoint.sh"]
 
-# Expose the Ollama API port
-EXPOSE 11434
 
