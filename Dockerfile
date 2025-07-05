@@ -1,11 +1,9 @@
-# Use Ollama's official base image
+# Use official Ollama base image
 FROM ollama/ollama:latest
 
-# Automatically pull the desired model (e.g., mistral) on startup
-RUN ollama pull mistral
-
-# Expose the default Ollama API port
+# Expose Ollama's default API port
 EXPOSE 11434
 
-# Start the Ollama server
-CMD ["ollama", "serve"]
+# Start the server and pull mistral when the container starts
+CMD ollama serve & sleep 5 && ollama pull mistral && wait
+
